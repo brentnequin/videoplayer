@@ -5,14 +5,14 @@
       "use": "@vercel/python"
     },
     {
-      "src": "vercel_app/wsgi.py",
+      "src": "video_player/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "vercel_app/wsgi.py"
+      "dest": "video_player/wsgi.py"
     }
   ]
 }
