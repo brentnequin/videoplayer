@@ -1,13 +1,9 @@
 {
-  "functions": {
-    "video_player/wsgi.py": {
-      "runtime": "vercel-python"
-    }
-  },
-  "rewrites": [
+  "buildCommand": "python video_player/wsgi.py",
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "video_player/wsgi.py"
+      "src": "/(.*)",
+      "dest": "video_player/wsgi.py"
     }
   ]
 }
