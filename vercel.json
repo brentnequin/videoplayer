@@ -1,7 +1,7 @@
 {
   "functions": {
     "video_player/wsgi.py": {
-      "runtime": "Python"
+      "runtime": "vercel-python"
     }
   },
   "rewrites": [
