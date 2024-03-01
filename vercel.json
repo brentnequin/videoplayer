@@ -5,11 +5,8 @@
       "use": "@vercel/python"
     },
     {
-      "src": "scripts/build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles_build"
-      }
+      "src": "build.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
