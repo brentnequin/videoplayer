@@ -16,3 +16,6 @@ venv.bak/
 
 # tailwind
 theme/static
+
+# build
+staticfiles
