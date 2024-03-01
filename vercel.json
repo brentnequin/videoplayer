@@ -1,9 +1,18 @@
 {
-  "buildCommand": "python video_player/wsgi.py",
+  "builds": [
+    {
+      "src": "manage.py migrate",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "vercel_app/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "video_player/wsgi.py"
+      "dest": "vercel_app/wsgi.py"
     }
   ]
 }
