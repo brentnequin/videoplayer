@@ -1,18 +1,18 @@
 {
   "builds": [
     {
-      "src": "video_player/wsgi.py",
-      "use": "@vercel/python"
+      "src": "build.sh",
+      "use": "@vercel/static-build"
     },
     {
-      "src": "build.py",
+      "src": "vercel_app/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "video_player/wsgi.py"
+      "dest": "vercel_app/wsgi.py"
     }
   ]
 }
