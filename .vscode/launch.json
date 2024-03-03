@@ -7,14 +7,26 @@
             "request": "launch",
             "stopOnEntry": false,
             "program": "${workspaceRoot}/manage.py",
+            "console": "internalConsole",
             "args": [
                 "runserver",
-                "--no-color",
-                "--noreload"
+                "--no-color"
             ],
             "env": {
-                "DEBUG": "false"
+                "DEBUG": "true"
             }
+        },
+        {
+            "name": "Tailwind",
+            "type": "debugpy",
+            "request": "launch",
+            "stopOnEntry": false,
+            "program": "${workspaceRoot}/manage.py",
+            "console": "internalConsole",
+            "args": [
+                "tailwind",
+                "start"
+            ]
         }
     ]
 }

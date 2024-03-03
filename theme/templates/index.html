@@ -8,6 +8,7 @@
         <a href="/watch?v={{ video.id }}" title="{{ video.title }}">
             <img class="" src={{ video.thumbnail_url }}>
             <p>{{ video.title }}</p>
+            <p>{{ video.owner.username }}</p>
         </a>
     </div>
     {% endfor %}
