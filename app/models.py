@@ -7,17 +7,8 @@ from cloudinary.models import CloudinaryField
 import uuid
 
 
-def generate_unique_id():
-    length = 10
-    while True:
-        id = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=length))
-        if Video.objects.filter(id=id).count() == 0:
-            break
-    return id
-
-
 class Video(models.Model):
-    id = models.CharField(max_length=10, default=uuid.uuid1, unique=True, primary_key=True)
+    id = models.CharField(default=uuid.uuid1, unique=True, primary_key=True)
     file = CloudinaryField(id, resource_type='video', folder='video-player')
     title = models.CharField(max_length=32)
     description = models.CharField(max_length=128, blank=True)
