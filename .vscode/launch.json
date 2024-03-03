@@ -11,7 +11,10 @@
                 "runserver",
                 "--no-color",
                 "--noreload"
-            ]
+            ],
+            "env": {
+                "DEBUG": "false"
+            }
         }
     ]
 }

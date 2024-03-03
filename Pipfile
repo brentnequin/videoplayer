@@ -10,6 +10,7 @@ django-tailwind = "==3.6.0"
 cloudinary = "*"
 psycopg2-binary = "==2.9.9"
 django-htmx = "*"
+whitenoise = "*"
 
 [dev-packages]
 django-browser-reload = "*"
