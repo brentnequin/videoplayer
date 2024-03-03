@@ -9,6 +9,7 @@ dj-database-url = "==2.1.0"
 django-tailwind = "==3.6.0"
 cloudinary = "*"
 psycopg2-binary = "==2.9.9"
+django-htmx = "*"
 
 [dev-packages]
 django-browser-reload = "*"

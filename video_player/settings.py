@@ -16,7 +16,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, "static")
+    BASE_DIR / "static"
 ]
 # STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
@@ -29,12 +29,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 SECRET_KEY = os.environ['APP_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 INTERNAL_IPS = ['127.0.0.1']
 TAILWIND_APP_NAME = 'theme'
 
+# Cloudinary
+CLOUDINARY_NAME = os.environ['CLOUDINARY_NAME']
+CLOUDINARY_API_KEY = os.environ['CLOUDINARY_API_KEY']
+CLOUDINARY_API_SECRET = os.environ['CLOUDINARY_API_SECRET']
+
+# Login redirects
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
 
 # Application definition
 
@@ -47,7 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'tailwind',
-    'theme'
+    'theme',
+    "django_htmx",
 ]
 
 MIDDLEWARE = [
@@ -57,7 +66,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 if DEBUG:

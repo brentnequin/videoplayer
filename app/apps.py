@@ -1,13 +1,18 @@
 from django.apps import AppConfig
 import cloudinary
+from video_player import settings
+
+
+MAX_UPLOAD_SIZE = 1024 * 1024 * 4
 
 
 class Config(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
     name = 'app'
 
+    max_upload_size = MAX_UPLOAD_SIZE
+
     cloudinary.config( 
-        cloud_name = "dpazoxrkf", 
-        api_key = "884621821116849", 
-        api_secret = "dN931d1JUd7Do2_9-fToBx5Gx38" 
+        cloud_name = settings.CLOUDINARY_NAME,
+        api_key = settings.CLOUDINARY_API_KEY,
+        api_secret = settings.CLOUDINARY_API_SECRET
     )

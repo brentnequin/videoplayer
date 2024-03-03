@@ -4,6 +4,7 @@ import random
 import string
 from datetime import date
 from cloudinary.models import CloudinaryField
+import uuid
 
 
 def generate_unique_id():
@@ -16,18 +17,17 @@ def generate_unique_id():
 
 
 class Video(models.Model):
-    id = models.CharField(max_length=10, default=generate_unique_id, unique=True, primary_key=True)
-    video = CloudinaryField(id, resource_type='video', folder='video-player')
-    # thumbnail = models.FileField(upload_to='', blank=True)
+    id = models.CharField(max_length=10, default=uuid.uuid1, unique=True, primary_key=True)
+    file = CloudinaryField(id, resource_type='video', folder='video-player')
     title = models.CharField(max_length=32)
-    description = models.CharField(max_length=128)
+    description = models.CharField(max_length=128, blank=True)
     owner = models.ForeignKey(User, related_name='videos', on_delete=models.CASCADE)
     date = models.DateField(default=date.today)
 
     @property
     def url(self):
-        return self.video.url
+        return self.file.url
 
     @property
     def thumbnail_url(self):
-        return self.video.video_thumbnail()
+        return self.file.video_thumbnail()

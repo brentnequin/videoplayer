@@ -1,0 +1,40 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Django Tailwind</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<script src="{% static 'js/htmx.min.js' %}" defer></script>
+		{% tailwind_css %}
+		{% block script %}{% endblock script %}
+	</head>
+	<header>
+		<div class="container mx-auto my-8 flex justify-between">
+			<a href="/">
+				<h1 class="text-4xl">Video Player</h1>
+			</a>
+			<div>
+				{% if user.is_authenticated %}
+				<a href="/new-video">
+					<h1 class="text-xl">Upload</h1>
+				</a>
+				<a href="/users/logout">
+					<h1 class="text-xl">Logout</h1>
+				</a>
+				{% else %}
+				<a href="/users/login">
+					<h1 class="text-xl">Login</h1>
+				</a>
+				{% endif %}
+			</div>
+		</div>
+	</header>
+	<body>
+		<div class="container mx-auto">
+			{% block content %}{% endblock content %}
+		</div>
+	</body>
+</html>
