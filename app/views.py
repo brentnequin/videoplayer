@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpRequest
+from django.shortcuts import render, redirect, resolve_url
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
+from django.urls import reverse
 from app.models import Video
 from app.forms import UploadVideoForm
 from django.views.decorators.http import require_http_methods
@@ -29,7 +30,9 @@ def upload(request: HttpRequest):
 
         video = Video(**form.cleaned_data, owner=request.user)
         video.save()
-        return HttpResponse('Success')  
+        response = HttpResponse()
+        response["HX-Redirect"] = f'/watch?v={str(video.id)}'
+        return response
 
 
 def watch(request: HttpRequest):

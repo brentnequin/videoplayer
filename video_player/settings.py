@@ -32,7 +32,7 @@ SECRET_KEY = os.environ['APP_SECRET_KEY']
 DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.brentnequin.com']
-INTERNAL_IPS = ['127.0.0.1', '.vercel.app', '.brentnequin.com']
+INTERNAL_IPS = ['127.0.0.1']
 TAILWIND_APP_NAME = 'theme'
 
 # Cloudinary
