@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div>
+    <video controls="controls">
+        <source src="{{ video.url }}" type="video/mp4"></source>
+    </video>
+</div>
+<div class="my-4 rounded-lg bg-slate-200 p-4">
+    <h2 class="text-xl font-bold">{{ video.title }}</h2>
+    <p>{{ video.date }}</p>
+    <p>{{ video.owner.username }}</p>
+    <p>{{ video.description }}</p>
+</div>
+{% endblock content %}

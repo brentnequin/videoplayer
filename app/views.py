@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 from app.models import Video
 from app.forms import UploadVideoForm
@@ -30,3 +30,13 @@ def upload(request: HttpRequest):
         video = Video(**form.cleaned_data, owner=request.user)
         video.save()
         return HttpResponse('Success')  
+
+
+def watch(request: HttpRequest):
+
+    if not (video_id := request.GET.get('v')):
+        return redirect('index')
+
+    return render(request, 'watch.html', {
+        'video': Video.objects.get(id=video_id)
+    })

@@ -2,15 +2,16 @@
 
 {% block content %}
 <h2 class="text-2xl mb-4">Recent Uploads</h2>
-<div class="grid grid-cols-4 gap-4">
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     {% for video in videos %}
-    <div>
-        <a href="/watch?v={{ video.id }}" title="{{ video.title }}">
-            <img class="" src={{ video.thumbnail_url }}>
-            <p>{{ video.title }}</p>
+    <a href="/watch?v={{ video.id }}" title="{{ video.title }}">
+        <img class="rounded-lg" src={{ video.thumbnail_url }}>
+        <p class="text-lg font-medium mt-2">{{ video.title }}</p>
+        <div class="text-gray-500 text-sm">
             <p>{{ video.owner.username }}</p>
-        </a>
-    </div>
+            <p>{{ video.date }}</p>
+        </div>
+    </a>
     {% endfor %}
 </div>
 {% endblock content %}

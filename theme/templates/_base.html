@@ -11,25 +11,27 @@
 	</head>
 	<header class="container mx-auto my-8">
 		<div class="flex justify-between">
-			<div class="flex items-center">
-				<a href="/" class="text-4xl">Video Player</a>
-				<div class="flex items-center space-x-4">
+			<div class="flex items-center space-x-8">
+				<a href="/" class="text-4xl font-serif tracking-tight">VideoPlayer</a>
+				{% if user.is_authenticated %}
+				<div class="flex items-center space-x-4 text-lg mx-2 font-medium">
 					<a href="/upload">Upload</a>
 				</div>
+				{% endif %}
 			</div>
-			<div class="flex items-center">
-				<nav class="text-xl">
+			<div class="flex items-center space-x-4">
+				<nav class="text-lg">
 					{% if user.is_authenticated %}
-					<a href="/users/logout">Logout</a>
+					<a href="/users/logout" class="p-2 border rounded-lg">Logout</a>
 					{% else %}
-					<a href="/users/login">Login</a>
+					<a href="/users/login" class="p-2 border rounded-lg">Login</a>
 					{% endif %}
 				</nav>
 			</div>
 		</div>
 	</header>
 	<body>
-		<div class="container mx-auto">
+		<div class="container mx-auto font-sans">
 			{% block content %}{% endblock content %}
 		</div>
 	</body>
