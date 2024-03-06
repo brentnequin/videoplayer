@@ -14,5 +14,6 @@ class Config(AppConfig):
     cloudinary.config( 
         cloud_name = settings.CLOUDINARY_NAME,
         api_key = settings.CLOUDINARY_API_KEY,
-        api_secret = settings.CLOUDINARY_API_SECRET
+        api_secret = settings.CLOUDINARY_API_SECRET,
+        secure=True
     )
