@@ -8,14 +8,14 @@
       }
     },
     {
-      "src": "video_player/wsgi.py",
+      "src": "videoplayer/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "video_player/wsgi.py"
+      "dest": "videoplayer/wsgi.py"
     }
   ]
 }

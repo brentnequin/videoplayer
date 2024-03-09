@@ -1,5 +1,5 @@
 """
-WSGI config for video_player project.
+WSGI config for videoplayer project.
 
 It exposes the WSGI callable as a module-level variable named ``app``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'video_player.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'videoplayer.settings')
 
 app = get_wsgi_application()

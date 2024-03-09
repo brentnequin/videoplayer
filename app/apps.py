@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 import cloudinary
-from video_player import settings
+from videoplayer import settings
 
 
 MAX_UPLOAD_SIZE = 1024 * 1024 * 4
