@@ -11,9 +11,12 @@ cloudinary = "*"
 psycopg2-binary = "==2.9.9"
 django-htmx = "*"
 whitenoise = "*"
+requests = "~=2.27"
+authlib = "~=1.0"
 
 [dev-packages]
 django-browser-reload = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.9"

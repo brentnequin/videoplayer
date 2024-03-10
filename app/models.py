@@ -23,6 +23,7 @@ class Video(models.Model):
     description = models.CharField(max_length=128, blank=True)
     owner = models.ForeignKey(User, related_name='videos', on_delete=models.CASCADE)
     date = models.DateField(default=date.today)
+    # views = models.IntegerField(default=0)
 
     @property
     def url(self):
