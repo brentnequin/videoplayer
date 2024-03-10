@@ -17,6 +17,7 @@ python-dotenv = "*"
 
 [dev-packages]
 django-browser-reload = "*"
+flake8 = "~=7.0"
 
 [requires]
 python_version = "3.9"
