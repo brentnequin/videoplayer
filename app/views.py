@@ -1,5 +1,3 @@
-import json
-
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 from django.urls import reverse
@@ -14,8 +12,6 @@ from urllib.parse import quote_plus, urlencode
 
 from app.models import Video
 from app.forms import UploadVideoForm
-
-import jwt
 
 oauth = OAuth()
 
