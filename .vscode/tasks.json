@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Django Make Migrations",
+            "type": "shell",
+            "detail": "Make Django migrations.",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "manage.py",
+                "makemigrations",
+                "app"
+            ],
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "DEBUG": "true"
+                }
+            },
+        },
+        {
+            "label": "Django Migrate",
+            "type": "shell",
+            "detail": "Apply Django migrations.",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "manage.py",
+                "migrate"
+            ],
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "DEBUG": "true"
+                }
+            }
+        }
+    ]
+}

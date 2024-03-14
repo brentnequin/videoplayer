@@ -1,19 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-import random
-import string
 from datetime import date
 from cloudinary.models import CloudinaryField
 import uuid
 
 
-def generate_unique_id():
-    length = 10
-    while True:
-        id = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=length))
-        if Video.objects.filter(id=id).count() == 0:
-            break
-    return id
+class Tag(models.Model):
+    label = models.CharField(max_length=64)
+    slug = models.CharField(max_length=64)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Video(models.Model):
@@ -23,7 +18,8 @@ class Video(models.Model):
     description = models.CharField(max_length=128, blank=True)
     owner = models.ForeignKey(User, related_name='videos', on_delete=models.CASCADE)
     date = models.DateField(default=date.today)
-    # views = models.IntegerField(default=0)
+    tags = models.ManyToManyField(Tag, related_name='videos')
+    views = models.IntegerField(default=0)
 
     @property
     def url(self):

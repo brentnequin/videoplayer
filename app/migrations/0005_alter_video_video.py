@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='video',
             name='video',
-            field=cloudinary.models.CloudinaryField(max_length=255, verbose_name=models.CharField(default=app.models.generate_unique_id, max_length=10, primary_key=True, serialize=False, unique=True)),
+            field=cloudinary.models.CloudinaryField(max_length=255, verbose_name=models.CharField(default="", max_length=10, primary_key=True, serialize=False, unique=True)),
         ),
     ]

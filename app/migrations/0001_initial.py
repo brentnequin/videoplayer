@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Video',
             fields=[
-                ('id', models.CharField(default=app.models.generate_unique_id, max_length=10, primary_key=True, serialize=False, unique=True)),
+                ('id', models.CharField(default="", max_length=10, primary_key=True, serialize=False, unique=True)),
                 ('video', models.FileField(upload_to='')),
                 ('thumbnail', models.FileField(upload_to='')),
                 ('title', models.CharField(max_length=32)),

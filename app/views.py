@@ -83,7 +83,7 @@ def upload(request: HttpRequest):
 
     if request.method == 'GET':
         return render(request, 'upload.html')
-    
+
     elif request.method == 'POST':
         form = UploadVideoForm(data=request.POST or None, files=request.FILES)
 
@@ -103,6 +103,12 @@ def watch(request: HttpRequest):
     if not (video_id := request.GET.get('v')):
         return redirect('index')
 
+    if not (video := Video.objects.get(id=video_id)):
+        return redirect('index')
+
+    video.views += 1
+    video.save()
+
     return render(request, 'watch.html', {
-        'video': Video.objects.get(id=video_id)
+        'video': video
     })

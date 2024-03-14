@@ -29,7 +29,8 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, "theme", "templates")
 SECRET_KEY = os.environ['APP_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
+# DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
+DEBUG=True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.brentnequin.com']
 INTERNAL_IPS = ['127.0.0.1']
