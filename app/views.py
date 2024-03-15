@@ -25,10 +25,12 @@ oauth.register(
     server_metadata_url=f"https://{settings.AUTH0_DOMAIN}/.well-known/openid-configuration",
 )
 
+
 def login(request: HttpRequest):
     return oauth.auth0.authorize_redirect(
         request, request.build_absolute_uri(reverse("callback"))
     )
+
 
 def callback(request: HttpRequest):
     try:
@@ -47,6 +49,7 @@ def callback(request: HttpRequest):
     login_user(request, user)
     return redirect(request.build_absolute_uri(reverse("index")))
 
+
 def logout(request: HttpRequest):
 
     logout_user(request)
@@ -63,10 +66,12 @@ def logout(request: HttpRequest):
         ),
     )
 
+
 def _common_context(request: HttpRequest):
     return {
         'session': request.session.get('user')
     }
+
 
 def index(request: HttpRequest):
 
@@ -82,14 +87,16 @@ def index(request: HttpRequest):
 def upload(request: HttpRequest):
 
     if request.method == 'GET':
-        return render(request, 'upload.html')
+        return render(
+            request, 'upload.html',
+            _common_context(request) | {'form': UploadVideoForm()}
+        )
 
     elif request.method == 'POST':
         form = UploadVideoForm(data=request.POST or None, files=request.FILES)
 
         if not form.is_valid():
-            return HttpResponse(
-                f'<p class="error">Your form submission was unsuccessful ❌. Please would you correct the errors? The current errors: {form.errors}</p>')
+            return HttpResponse()
 
         video = Video(**form.cleaned_data, owner=request.user)
         video.save()
@@ -109,6 +116,25 @@ def watch(request: HttpRequest):
     video.views += 1
     video.save()
 
-    return render(request, 'watch.html', {
+    return render(request, 'watch.html', _common_context(request) | {
         'video': video
     })
+
+
+def error(request: HttpRequest):
+
+    return render(request, 'error.html', _common_context(request))
+
+
+def edit(request: HttpRequest):
+
+    if not (video_id := request.GET.get('v')):
+        return redirect('index')
+
+    if not (video := Video.objects.get(id=video_id)):
+        return redirect('index')
+
+    if not (video.owner is not request.user):
+        return redirect('error')
+
+    return render(request, 'edit.html', _common_context(request))
