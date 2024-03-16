@@ -1,55 +1,59 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-    	<title>Video Player</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<script src="{% static 'js/htmx.min.js' %}" defer></script>
-		<script src="{% static 'css/flowbite.min.js' %}" defer></script>
-		{% tailwind_css %}
-	</head>
-	<header class="container my-8">
-		<div class="flex justify-between">
-			<div class="flex items-center space-x-8">
-				<a href="{% url 'index' %}" class="text-4xl font-serif tracking-tight">VideoPlayer</a>
+
+<head>
+	<title>Video Player</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="{% static 'js/htmx.min.js' %}" defer></script>
+	<script src="{% static 'js/flowbite.min.js' %}" defer></script>
+	{% tailwind_css %}
+</head>
+<header class="container my-8">
+	<div class="flex justify-between">
+		<div class="flex items-center space-x-8">
+			<a href="{% url 'index' %}" class="text-4xl font-serif tracking-tight">VideoPlayer</a>
+			{% if session %}
+			<div class="flex items-center space-x-4 text-lg mx-2 font-medium"></div>
+			{% endif %}
+		</div>
+		<div class="flex items-center space-x-4">
+			<nav class="text-lg space-x-4">
 				{% if session %}
-				<div class="flex items-center space-x-4 text-lg mx-2 font-medium"></div>
+				<button 
+					id="dropdownDefaultButton"
+					data-dropdown-toggle="dropdown" 
+					data-dropdown-placement="bottom-end"
+					class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center"
+					type="button">
+					{{ user.username }}
+				</button>
+				<div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+					<ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+						{% if perms.app_label.add_video %}
+						<li>
+							<a href="{% url 'upload' %}" class="block px-4 py-2 hover:bg-gray-100">Upload</a>
+						</li>
+						{% endif %}
+						<li>
+							<a href="{% url 'logout' %}" class="block px-4 py-2 hover:bg-gray-100">Sign Out</a>
+						</li>
+					</ul>
+				</div>
+				{% else %}
+				<a href="{% url 'login' %}" class="p-2 border rounded-lg">Login</a>
 				{% endif %}
-			</div>
-			<div class="flex items-center space-x-4">
-				<nav class="text-lg space-x-4">
-					{% if session %}
-					<button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" data-dropdown-placement="bottom-end"
-						class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-						type="button">{{ user.username }}
-						</svg>
-					</button>
-					<div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-						<ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-							{% if perms.app_label.add_video %}
-							<li>
-								<a href="{% url 'upload' %}"
-									class="block px-4 py-2 hover:bg-gray-100">Upload</a>
-							</li>
-							{% endif %}
-							<li>
-								<a href="{% url 'logout' %}"
-									class="block px-4 py-2 hover:bg-gray-100">Sign Out</a>
-							</li>
-						</ul>
-					</div>
-					{% else %}
-					<a href="{% url 'login' %}" class="p-2 border rounded-lg">Login</a>
-					{% endif %}
-				</nav>
-			</div>
+			</nav>
 		</div>
-	</header>
-	<body>
-		<div class="container mx-auto font-sans">
-			{% block content %}{% endblock content %}
-		</div>
-	</body>
+	</div>
+</header>
+
+<body>
+	<div class="container mx-auto font-sans">
+		{% block content %}{% endblock content %}
+	</div>
+</body>
+
 </html>
