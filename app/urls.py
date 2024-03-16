@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf import settings
 from . import views
 
 urlpatterns = [
@@ -13,3 +14,6 @@ urlpatterns = [
     path("logout", views.logout, name="logout"),
     path("callback", views.callback, name="callback"),
 ]
+
+if settings.DEBUG:
+    urlpatterns.append(path('test', views.test, name='test'))

@@ -138,3 +138,11 @@ def edit(request: HttpRequest):
         return redirect('error')
 
     return render(request, 'edit.html', _common_context(request))
+
+
+def test(request: HttpRequest):
+
+    return render(
+        request, 'test.html',
+        context={}
+    )
