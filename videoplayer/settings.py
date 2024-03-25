@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     "django_htmx",
-    'fontawesomefree'
 ]
 
 MIDDLEWARE = [
