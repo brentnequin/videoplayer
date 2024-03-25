@@ -14,7 +14,6 @@ whitenoise = "*"
 requests = "~=2.27"
 authlib = "~=1.0"
 python-dotenv = "*"
-fontawesomefree = "*"
 
 [dev-packages]
 django-browser-reload = "*"
