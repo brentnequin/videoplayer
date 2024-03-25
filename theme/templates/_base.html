@@ -24,18 +24,10 @@
 		</div>
 		<div class="flex items-center space-x-4">
 			<nav class="space-x-8">
-				{% if session %}
-				<!-- <button 
-					id="dropdownDefaultButton"
-					data-dropdown-toggle="dropdown" 
-					data-dropdown-placement="bottom-end"
-					class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center"
-					type="button">
-					{{ user.username }}
-				</button> -->
 				<button>
 					<i class="fa-solid fa-magnifying-glass text-2xl"></i>
 				</button>
+				{% if session %}
 				<button
 					id="dropdownDefaultButton"
 					data-dropdown-toggle="dropdown" 
@@ -54,15 +46,6 @@
 						<a href="#" class="block px-4 py-2 hover:bg-gray-100">Your Videos</a>
 					</div>
 					<div class="py-1">
-						<!-- <div class="block px-4 py-2">
-							<label for="theme" class="mr-4">Set Theme:</label>
-
-							<select name="theme" id="theme" class="text-sm rounded-lg p-0">
-								<option value="system">System</option>
-								<option value="light">Light</option>
-								<option value="dark">Dark</option>
-							</select>
-						</div> -->
 						<a href="#" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
 						<a href="{% url 'logout' %}" class="block px-4 py-2 hover:bg-gray-100">Sign Out</a>
 					</div>
